@@ -16,7 +16,11 @@ from scipy.special import legendre
 
 
 class Legendre(Initializer):
-    """Initializes weights using the Legendre polynomials."""
+    """
+    Initializes weights using Legendre polynomials,
+    leveraging scipy's legendre function. This may be used
+    for the encoder and kernel initializers.
+    """
 
     def __call__(self, shape, dtype=None):
         if len(shape) != 2:
@@ -30,21 +34,24 @@ class Legendre(Initializer):
 
 
 class LMUCell(Layer):
-    """A layer of trainable low-dimensional delay systems.
+    """
+    A layer of trainable low-dimensional delay systems.
 
     Each unit buffers its encoded input
     by internally representing a low-dimensional
-    (i.e., compressed) version of the input window.
+    (i.e., compressed) version of the sliding window.
 
-    Nonlinear decodings of this representation
-    provide computations across the window, such
-    as its derivative, energy, median value, etc (*).
-    Note that decoders can span across all of the units.
+    Nonlinear decodings of this representation,
+    expressed by the A and B matrices, provide
+    computations across the window, such as its
+    derivative, energy, median value, etc (*).
+    Note that these decoder matrices can span across
+    all of the units of an input sequence.
 
     By default the window lengths are trained via backpropagation,
     as well as the encoding and decoding weights.
 
-    Optionally, the state-space matrices that implement
+    Optionally, the A and B matrices that implement
     the low-dimensional delay system can be trained as well,
     but these are shared across all of the units in the layer.
 
@@ -55,6 +62,100 @@ class LMUCell(Layer):
     (*) Voelker and Eliasmith. "Methods and systems for implementing
     dynamic neural networks." U.S. Patent Application No. 15/243,223.
     Filing date: 2016-08-22.
+
+    Parameters
+    ----------
+    units : int
+        The number of cells the layer will hold. This
+        defines the dimensionality of the output vector.
+    order : int
+        The size of the memory cell. This defines the
+        first dimensions of both the memory encorder
+        and kernel. It is also used to determine the
+        dimensions of the A and B matrices.
+    theta : int
+        The size of the sliding window, equivalent to
+        the number of timesteps the model will process.
+        In this context, the sliding window represents
+        a dynamic range of data, of fixed size, that will
+        be used to predict the value at the next time step.
+        If this value is smaller than the size of the input
+        sequence, only that number of steps will be represented
+        in the A and B matrices at the time of prediction,
+        however the entire sequence will still be processed
+        in order for information to be projected to and from
+        the hidden layer. This value is relative to a timestep
+        of 1 second.
+    method : string, optional
+        The discretization method used to compute the A
+        and B matrices. These matrices are used to map
+        inputs onto the memory of the network.
+    realizer : nengolib.signal, optional
+        Determines what state space representation is
+        being realized. This will be applied to the A
+        and B matrices. Generally, unless you are training
+        the A and B matrices, this should remain as
+        its default.
+    factory : nengolib.synapses, optional
+        Determines what LTI is being created. By default,
+        this is the A and B matrices. This can also be used
+        to produce different realizations for the same LTI.
+        For example, using PadeDelay would give a rotation
+        of LegendreDelay. In general, this allows you to
+        swap out the dynamic primitive for something else
+        entirely.
+    trainable_input_encoders : bool, optional
+        When true, the input encoders will be trained. This
+        will allow for the encoders to learn what
+        information is relevant to project from the input.
+    trainable_hidden_encoders : bool, optional
+        When true, the hidden encoders will be trained. This
+        will allow for the encoders to learn what
+        information is relevant to project from the hidden
+        state.
+    trainable_memory_encoders : bool, optional
+        When true, the memory encoders will be trained. This
+        will allow for the encoders to learn what
+        information is relevant to project from the memory.
+    trainable_input_kernel : bool, optional
+        When true, the input kernel will be trained. This
+        will allow for the kernel to learn to compute
+        nonlinear functions across the memory.
+    trainable_hidden_kernel : bool, optional
+        When true, the hidden kernel will be trained. This
+        will allow for the kernel to learn to compute
+        nonlinear functions across the memory.
+    trainable_memory_kernel : bool, optional
+        When true, the memory kernel will be trained. This
+        will allow for the kernel to learn to compute
+        nonlinear functions across the memory.
+    trainable_A : bool, optional
+        When true, the A matrix will be trained via backpropagation,
+        though this is generally not necessary as they can be derived.
+    trainable_B : bool, optional
+        When true, the B matrix will be trained via backpropagation,
+        though this is generally not necessary as they can be derived.
+    input_encoders_initializer : tf.keras.initializers.Initializer, optional
+        The distribution for the input encoder weights initialization.
+    hidden_encoders_initializer : tf.keras.initializers.Initializer, optional
+        The distribution for the hidden encoder weights initialization.
+    memory_encoders_initializer : tf.keras.initializers.Initializer, optional
+        The distribution for the memory encoder weights initialization.
+    input_kernel_initializer : tf.keras.initializers.Initializer, optional
+        The distribution for the input kernel weights initialization.
+    hidden_kernel_initializer : tf.keras.initializers.Initializer, optional
+        The distribution for the hidden kernel weights initialization.
+    memory_kernel_initializer : tf.keras.initializers.Initializer, optional
+        The distribution for the memory kernel weights initialization.
+    hidden_activation : string, optional
+        The activation function to be used in the hidden component of the LMU.
+
+    Attributes
+    ----------
+    state_size : tuple
+        A tuple containing the units and order.
+    output_size : int
+        A duplicate of the units parameter.
     """
 
     def __init__(
@@ -138,7 +239,10 @@ class LMUCell(Layer):
 
     def build(self, input_shape):
         """
-        Initializes various network parameters.
+        Overrides the TensorFlow build function.
+        Initializes all the encoders and kernels,
+        as well as the A and B matrices for the
+        LMUCell.
         """
 
         input_dim = input_shape[-1]
@@ -205,6 +309,7 @@ class LMUCell(Layer):
 
     def call(self, inputs, states):
         """
+        Overrides the TensorFlow call function.
         Contains the logic for one LMU step calculation.
         """
 
@@ -228,7 +333,8 @@ class LMUCell(Layer):
 
     def get_config(self):
         """
-        Overrides the tensorflow get_config function.
+        Overrides the TensorFlow get_config function.
+        Sets the config with the LMUCell parameters.
         """
 
         config = super().get_config()
@@ -238,7 +344,7 @@ class LMUCell(Layer):
                 order=self.order,
                 theta=self.theta,
                 method=self.method,
-                factor=self.factory,
+                factory=self.factory,
                 trainable_input_encoders=self.trainable_input_encoders,
                 trainable_hidden_encoders=self.trainable_hidden_encoders,
                 trainable_memory_encoders=self.trainable_memory_encoders,

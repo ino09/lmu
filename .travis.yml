@@ -28,6 +28,13 @@ jobs:
   -
     env:
       SCRIPT="static"
+  -
+    env:
+      SCRIPT="docs"
+    addons:
+      apt:
+        packages:
+          - pandoc
   - stage: deploy
     if: branch =~ ^release-candidate-* OR tag =~ ^v[0-9]*
     env: SCRIPT="deploy"
