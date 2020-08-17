@@ -1,0 +1,1071 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>lmu.lmu &#8212; NengoLMU 0.1.1.dev0 docs</title>
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,600|Rajdhani:700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.nengo.ai/css/bootstrap.css" type="text/css">
+<style>
+  body .title-bar,
+  body .documentation-source h1:after {
+    background-color: #a8acaf;
+  }
+</style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41658423-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-41658423-2');
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stickyfill/2.1.0/stickyfill.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<!-- From basic/layout.html -->
+<script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+  
+  
+<script src="../../_static/underscore.js"></script>
+  
+  
+<script src="../../_static/doctools.js"></script>
+  
+  
+<script src="../../_static/language_data.js"></script>
+  
+  
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+  
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  </head><body class="bg-dark">
+
+<header class="fixed-top header-top shadow-sm">
+  <nav class="navbar navbar-expand-md navbar-light bg-white">
+    <a class="navbar-brand" href="https://www.nengo.ai/">
+      <img
+        src="https://www.nengo.ai/design/_images/general-full-light.svg"
+        alt="Nengo"
+        class="logo"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-collapse"
+      aria-controls="navbar-collapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.nengo.ai/">What is Nengo?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.nengo.ai/examples/">Examples</a>
+        </li>
+        <li class="nav-item dropdown active">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbar-dropdown-docs"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            href="#"
+            >Documentation</a
+          >
+          <div
+            class="dropdown-menu shadow-lg border-0"
+            aria-labelledby="navbar-dropdown-docs"
+          >
+            
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo/">Nengo Core</a>
+            <a class="dropdown-item" href="https://github.com/nengo/nengo-gui/">Nengo GUI</a>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-dl/">Nengo DL</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-spa/">Nengo SPA</a>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-extras/">Nengo Extras</a>
+            <a class="dropdown-item" href="https://arvoelke.github.io/nengolib-docs/">Nengolib</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-fpga/">Nengo FPGA</a>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-loihi/">Nengo Loihi</a>
+            <a class="dropdown-item" href="https://github.com/nengo/nengo-ocl">Nengo OpenCL</a>
+            <a class="dropdown-item" href="https://github.com/project-rig/nengo_spinnaker">Nengo SpiNNaker</a>
+            <a class="dropdown-item" href="https://github.com/nengo/nengo-mpi">Nengo MPI</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/documentation/"
+              >All documentation</a
+            >
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbar-dropdown-community"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            href="#"
+            >Community</a
+          >
+          <div
+            class="dropdown-menu shadow-lg border-0"
+            aria-labelledby="navbar-dropdown-community"
+          >
+            <a class="dropdown-item" href="https://forum.nengo.ai">Forum</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/people/"
+              >People</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/summer-school/"
+              >Summer school</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/contributing/"
+              >Contributing</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/publications/"
+              >Publications</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/videos/"
+              >Videos</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/conduct/"
+              >Code of conduct</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/caa/">CAA</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link btn btn-success btn-sm text-white"
+            href="https://www.nengo.ai/getting-started/"
+            >Getting started</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<div class="main-content gradient-top">
+  <div class="container-fluid">
+    <div class="row"><a class="toggle-sidenav d-block d-md-none" href="#"
+  ><i class="icon-close fa fa-fw fa-arrow-left"></i
+  ><i class="icon-open fa fa-fw fa-arrow-right"></i
+></a>
+<div role="complementary" class="sidenav col-4 col-xl-3 p-0 border-right">
+  <h3 class="pt-5 px-5">
+    <a href="../../index.html">
+      <img
+        class="img-fluid documentation-image"
+        src="https://www.nengo.ai/design/_images/general-full-light.svg"
+        alt="NengoLMU"
+      />
+    </a>
+  </h3>
+<form class="px-5 py-3 my-0 border-bottom" action="../../search.html" method="get">
+  <div class="form-group form-group-single">
+    <input type="text" name="q" class="form-control" placeholder="Search" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+    <button type="submit" class="btn btn-link">
+      <img src="https://www.nengo.ai/img/icon-search.svg" alt="Go" />
+    </button>
+  </div>
+</form><div class="p-5 toctree">
+  
+    <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api-reference.html">API reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../project.html">Project information</a></li>
+</ul>
+
+  
+  </div>
+  
+  <form class="p-5 my-0 border-top">
+    <div class="form-group">
+      <label class="text-gray">Version:</label>
+      <select class="custom-select" onchange="switchVersion(this);">
+        
+        
+        <option selected>latest</option>
+        
+        
+      </select>
+    </div>
+  </form>
+  
+</div>
+      
+
+      <div class="col-12 col-md-8 col-xl-9">
+        <div class="container">
+          <div class="row">
+            <div class="col-10 offset-1 pb-5 documentation-source" role="main">
+              
+  <h1>Source code for lmu.lmu</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Core classes for the LMU package, including but not limited to</span>
+<span class="sd">the cell structure, differential equation, and gating.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">activations</span><span class="p">,</span> <span class="n">initializers</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.initializers</span> <span class="kn">import</span> <span class="n">Constant</span><span class="p">,</span> <span class="n">Initializer</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Layer</span>
+
+<span class="kn">from</span> <span class="nn">nengolib.signal</span> <span class="kn">import</span> <span class="n">Identity</span><span class="p">,</span> <span class="n">cont2discrete</span>
+<span class="kn">from</span> <span class="nn">nengolib.synapses</span> <span class="kn">import</span> <span class="n">LegendreDelay</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">legendre</span>
+
+
+<div class="viewcode-block" id="Legendre"><a class="viewcode-back" href="../../api-reference.html#lmu.Legendre">[docs]</a><span class="k">class</span> <span class="nc">Legendre</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Initializes weights using Legendre polynomials,</span>
+<span class="sd">    leveraging scipy&#39;s legendre function. This may be used</span>
+<span class="sd">    for the encoder and kernel initializers.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Legendre initializer assumes shape is 2D; but shape=</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">shape</span><span class="p">,)</span>
+            <span class="p">)</span>
+        <span class="c1"># TODO: geometric spacing might be useful too!</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">legendre</span><span class="p">(</span><span class="n">i</span><span class="p">)(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])]</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="LMUCell"><a class="viewcode-back" href="../../api-reference.html#lmu.LMUCell">[docs]</a><span class="k">class</span> <span class="nc">LMUCell</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A layer of trainable low-dimensional delay systems.</span>
+
+<span class="sd">    Each unit buffers its encoded input</span>
+<span class="sd">    by internally representing a low-dimensional</span>
+<span class="sd">    (i.e., compressed) version of the sliding window.</span>
+
+<span class="sd">    Nonlinear decodings of this representation,</span>
+<span class="sd">    expressed by the A and B matrices, provide</span>
+<span class="sd">    computations across the window, such as its</span>
+<span class="sd">    derivative, energy, median value, etc (*).</span>
+<span class="sd">    Note that these decoder matrices can span across</span>
+<span class="sd">    all of the units of an input sequence.</span>
+
+<span class="sd">    By default the window lengths are trained via backpropagation,</span>
+<span class="sd">    as well as the encoding and decoding weights.</span>
+
+<span class="sd">    Optionally, the A and B matrices that implement</span>
+<span class="sd">    the low-dimensional delay system can be trained as well,</span>
+<span class="sd">    but these are shared across all of the units in the layer.</span>
+
+<span class="sd">    (*) Voelker and Eliasmith (2018). Improving spiking dynamical</span>
+<span class="sd">    networks: Accurate delays, higher-order synapses, and time cells.</span>
+<span class="sd">    Neural Computation, 30(3): 569-609.</span>
+
+<span class="sd">    (*) Voelker and Eliasmith. &quot;Methods and systems for implementing</span>
+<span class="sd">    dynamic neural networks.&quot; U.S. Patent Application No. 15/243,223.</span>
+<span class="sd">    Filing date: 2016-08-22.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    units : int</span>
+<span class="sd">        The number of cells the layer will hold. This</span>
+<span class="sd">        defines the dimensionality of the output vector.</span>
+<span class="sd">    order : int</span>
+<span class="sd">        The size of the memory cell. This defines the</span>
+<span class="sd">        first dimensions of both the memory encorder</span>
+<span class="sd">        and kernel. It is also used to determine the</span>
+<span class="sd">        dimensions of the A and B matrices.</span>
+<span class="sd">    theta : int</span>
+<span class="sd">        The size of the sliding window, equivalent to</span>
+<span class="sd">        the number of timesteps the model will process.</span>
+<span class="sd">        In this context, the sliding window represents</span>
+<span class="sd">        a dynamic range of data, of fixed size, that will</span>
+<span class="sd">        be used to predict the value at the next time step.</span>
+<span class="sd">        If this value is smaller than the size of the input</span>
+<span class="sd">        sequence, only that number of steps will be represented</span>
+<span class="sd">        in the A and B matrices at the time of prediction,</span>
+<span class="sd">        however the entire sequence will still be processed</span>
+<span class="sd">        in order for information to be projected to and from</span>
+<span class="sd">        the hidden layer. This value is relative to a timestep</span>
+<span class="sd">        of 1 second.</span>
+<span class="sd">    method : string, optional</span>
+<span class="sd">        The discretization method used to compute the A</span>
+<span class="sd">        and B matrices. These matrices are used to map</span>
+<span class="sd">        inputs onto the memory of the network.</span>
+<span class="sd">    realizer : nengolib.signal, optional</span>
+<span class="sd">        Determines what state space representation is</span>
+<span class="sd">        being realized. This will be applied to the A</span>
+<span class="sd">        and B matrices. Generally, unless you are training</span>
+<span class="sd">        the A and B matrices, this should remain as</span>
+<span class="sd">        its default.</span>
+<span class="sd">    factory : nengolib.synapses, optional</span>
+<span class="sd">        Determines what LTI is being created. By default,</span>
+<span class="sd">        this is the A and B matrices. This can also be used</span>
+<span class="sd">        to produce different realizations for the same LTI.</span>
+<span class="sd">        For example, using PadeDelay would give a rotation</span>
+<span class="sd">        of LegendreDelay. In general, this allows you to</span>
+<span class="sd">        swap out the dynamic primitive for something else</span>
+<span class="sd">        entirely.</span>
+<span class="sd">    trainable_input_encoders : bool, optional</span>
+<span class="sd">        When true, the input encoders will be trained. This</span>
+<span class="sd">        will allow for the encoders to learn what</span>
+<span class="sd">        information is relevant to project from the input.</span>
+<span class="sd">    trainable_hidden_encoders : bool, optional</span>
+<span class="sd">        When true, the hidden encoders will be trained. This</span>
+<span class="sd">        will allow for the encoders to learn what</span>
+<span class="sd">        information is relevant to project from the hidden</span>
+<span class="sd">        state.</span>
+<span class="sd">    trainable_memory_encoders : bool, optional</span>
+<span class="sd">        When true, the memory encoders will be trained. This</span>
+<span class="sd">        will allow for the encoders to learn what</span>
+<span class="sd">        information is relevant to project from the memory.</span>
+<span class="sd">    trainable_input_kernel : bool, optional</span>
+<span class="sd">        When true, the input kernel will be trained. This</span>
+<span class="sd">        will allow for the kernel to learn to compute</span>
+<span class="sd">        nonlinear functions across the memory.</span>
+<span class="sd">    trainable_hidden_kernel : bool, optional</span>
+<span class="sd">        When true, the hidden kernel will be trained. This</span>
+<span class="sd">        will allow for the kernel to learn to compute</span>
+<span class="sd">        nonlinear functions across the memory.</span>
+<span class="sd">    trainable_memory_kernel : bool, optional</span>
+<span class="sd">        When true, the memory kernel will be trained. This</span>
+<span class="sd">        will allow for the kernel to learn to compute</span>
+<span class="sd">        nonlinear functions across the memory.</span>
+<span class="sd">    trainable_A : bool, optional</span>
+<span class="sd">        When true, the A matrix will be trained via backpropagation,</span>
+<span class="sd">        though this is generally not necessary as they can be derived.</span>
+<span class="sd">    trainable_B : bool, optional</span>
+<span class="sd">        When true, the B matrix will be trained via backpropagation,</span>
+<span class="sd">        though this is generally not necessary as they can be derived.</span>
+<span class="sd">    input_encoders_initializer : tf.keras.initializers.Initializer, optional</span>
+<span class="sd">        The distribution for the input encoder weights initialization.</span>
+<span class="sd">    hidden_encoders_initializer : tf.keras.initializers.Initializer, optional</span>
+<span class="sd">        The distribution for the hidden encoder weights initialization.</span>
+<span class="sd">    memory_encoders_initializer : tf.keras.initializers.Initializer, optional</span>
+<span class="sd">        The distribution for the memory encoder weights initialization.</span>
+<span class="sd">    input_kernel_initializer : tf.keras.initializers.Initializer, optional</span>
+<span class="sd">        The distribution for the input kernel weights initialization.</span>
+<span class="sd">    hidden_kernel_initializer : tf.keras.initializers.Initializer, optional</span>
+<span class="sd">        The distribution for the hidden kernel weights initialization.</span>
+<span class="sd">    memory_kernel_initializer : tf.keras.initializers.Initializer, optional</span>
+<span class="sd">        The distribution for the memory kernel weights initialization.</span>
+<span class="sd">    hidden_activation : string, optional</span>
+<span class="sd">        The activation function to be used in the hidden component of the LMU.</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    state_size : tuple</span>
+<span class="sd">        A tuple containing the units and order.</span>
+<span class="sd">    output_size : int</span>
+<span class="sd">        A duplicate of the units parameter.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">units</span><span class="p">,</span>
+        <span class="n">order</span><span class="p">,</span>
+        <span class="n">theta</span><span class="p">,</span>  <span class="c1"># relative to dt=1</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;zoh&quot;</span><span class="p">,</span>
+        <span class="n">realizer</span><span class="o">=</span><span class="n">Identity</span><span class="p">(),</span>  <span class="c1"># TODO: Deprecate?</span>
+        <span class="n">factory</span><span class="o">=</span><span class="n">LegendreDelay</span><span class="p">,</span>  <span class="c1"># TODO: Deprecate?</span>
+        <span class="n">trainable_input_encoders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_hidden_encoders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_memory_encoders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_input_kernel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_hidden_kernel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_memory_kernel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_A</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">trainable_B</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">input_encoders_initializer</span><span class="o">=</span><span class="s2">&quot;lecun_uniform&quot;</span><span class="p">,</span>
+        <span class="n">hidden_encoders_initializer</span><span class="o">=</span><span class="s2">&quot;lecun_uniform&quot;</span><span class="p">,</span>
+        <span class="n">memory_encoders_initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>  <span class="c1"># &#39;lecun_uniform&#39;,</span>
+        <span class="n">input_kernel_initializer</span><span class="o">=</span><span class="s2">&quot;glorot_normal&quot;</span><span class="p">,</span>
+        <span class="n">hidden_kernel_initializer</span><span class="o">=</span><span class="s2">&quot;glorot_normal&quot;</span><span class="p">,</span>
+        <span class="n">memory_kernel_initializer</span><span class="o">=</span><span class="s2">&quot;glorot_normal&quot;</span><span class="p">,</span>
+        <span class="n">hidden_activation</span><span class="o">=</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">realizer</span> <span class="o">=</span> <span class="n">realizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">factory</span> <span class="o">=</span> <span class="n">factory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_input_encoders</span> <span class="o">=</span> <span class="n">trainable_input_encoders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_hidden_encoders</span> <span class="o">=</span> <span class="n">trainable_hidden_encoders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_memory_encoders</span> <span class="o">=</span> <span class="n">trainable_memory_encoders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_input_kernel</span> <span class="o">=</span> <span class="n">trainable_input_kernel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_hidden_kernel</span> <span class="o">=</span> <span class="n">trainable_hidden_kernel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_memory_kernel</span> <span class="o">=</span> <span class="n">trainable_memory_kernel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_A</span> <span class="o">=</span> <span class="n">trainable_A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_B</span> <span class="o">=</span> <span class="n">trainable_B</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_encoders_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">input_encoders_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_encoders_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hidden_encoders_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_encoders_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">memory_encoders_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_kernel_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">input_kernel_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_kernel_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hidden_kernel_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_kernel_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">memory_kernel_initializer</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_activation</span> <span class="o">=</span> <span class="n">activations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hidden_activation</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_realizer_result</span> <span class="o">=</span> <span class="n">realizer</span><span class="p">(</span><span class="n">factory</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span> <span class="o">=</span> <span class="n">cont2discrete</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_realizer_result</span><span class="o">.</span><span class="n">realization</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">A</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>  <span class="c1"># puts into form: x += Ax</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">B</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_C</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">C</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># proper LTI</span>
+
+        <span class="c1"># assert self._C.shape == (1, self.order)</span>
+        <span class="c1"># C_full = np.zeros((self.units, self.order, self.units))</span>
+        <span class="c1"># for i in range(self.units):</span>
+        <span class="c1">#     C_full[i, :, i] = self._C[0]</span>
+        <span class="c1"># decoder_initializer = Constant(</span>
+        <span class="c1">#     C_full.reshape(self.units*self.order, self.units))</span>
+
+        <span class="c1"># TODO: would it be better to absorb B into the encoders and then</span>
+        <span class="c1"># initialize it appropriately? trainable encoders+B essentially</span>
+        <span class="c1"># does this in a low-rank way</span>
+
+        <span class="c1"># if the realizer is CCF then we get the following two constraints</span>
+        <span class="c1"># that could be useful for efficiency</span>
+        <span class="c1"># assert np.allclose(self._ss.B[1:], 0)  # CCF</span>
+        <span class="c1"># assert np.allclose(self._ss.B[0], self.order**2)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_size</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span>
+
+<div class="viewcode-block" id="LMUCell.build"><a class="viewcode-back" href="../../api-reference.html#lmu.LMUCell.build">[docs]</a>    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overrides the TensorFlow build function.</span>
+<span class="sd">        Initializes all the encoders and kernels,</span>
+<span class="sd">        as well as the A and B matrices for the</span>
+<span class="sd">        LMUCell.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">input_dim</span> <span class="o">=</span> <span class="n">input_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># TODO: add regularizers</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_encoders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_encoders&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_encoders_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_input_encoders</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_encoders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;hidden_encoders&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_encoders_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_hidden_encoders</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_encoders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;memory_encoders&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_encoders_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_memory_encoders</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_kernel&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_kernel_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_input_kernel</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;hidden_kernel&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_kernel_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_hidden_kernel</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;memory_kernel&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_kernel_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_memory_kernel</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">AT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;AT&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="o">.</span><span class="n">T</span><span class="p">),</span>  <span class="c1"># note: transposed</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_A</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">BT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;BT&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">),</span>  <span class="c1"># system is SISO</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_B</span><span class="o">.</span><span class="n">T</span><span class="p">),</span>  <span class="c1"># note: transposed</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_B</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">built</span> <span class="o">=</span> <span class="kc">True</span></div>
+
+<div class="viewcode-block" id="LMUCell.call"><a class="viewcode-back" href="../../api-reference.html#lmu.LMUCell.call">[docs]</a>    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overrides the TensorFlow call function.</span>
+<span class="sd">        Contains the logic for one LMU step calculation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">h</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">states</span>
+
+        <span class="n">u</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_encoders</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_encoders</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_encoders</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">AT</span><span class="p">)</span> <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">BT</span><span class="p">)</span>
+
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_activation</span><span class="p">(</span>
+            <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_kernel</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_kernel</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_kernel</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">h</span><span class="p">,</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span></div>
+
+<div class="viewcode-block" id="LMUCell.get_config"><a class="viewcode-back" href="../../api-reference.html#lmu.LMUCell.get_config">[docs]</a>    <span class="k">def</span> <span class="nf">get_config</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Overrides the TensorFlow get_config function.</span>
+<span class="sd">        Sets the config with the LMUCell parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">config</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">get_config</span><span class="p">()</span>
+        <span class="n">config</span><span class="o">.</span><span class="n">update</span><span class="p">(</span>
+            <span class="nb">dict</span><span class="p">(</span>
+                <span class="n">units</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span>
+                <span class="n">order</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span>
+                <span class="n">theta</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">theta</span><span class="p">,</span>
+                <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
+                <span class="n">factory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">factory</span><span class="p">,</span>
+                <span class="n">trainable_input_encoders</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_input_encoders</span><span class="p">,</span>
+                <span class="n">trainable_hidden_encoders</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_hidden_encoders</span><span class="p">,</span>
+                <span class="n">trainable_memory_encoders</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_memory_encoders</span><span class="p">,</span>
+                <span class="n">trainable_input_kernel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_input_kernel</span><span class="p">,</span>
+                <span class="n">trainable_hidden_kernel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_hidden_kernel</span><span class="p">,</span>
+                <span class="n">trainable_memory_kernel</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_memory_kernel</span><span class="p">,</span>
+                <span class="n">trainable_A</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_A</span><span class="p">,</span>
+                <span class="n">trainable_B</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_B</span><span class="p">,</span>
+                <span class="n">input_encorders_initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_encoders_initializer</span><span class="p">,</span>
+                <span class="n">hidden_encoders_initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_encoders_initializer</span><span class="p">,</span>
+                <span class="n">memory_encoders_initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_encoders_initializer</span><span class="p">,</span>
+                <span class="n">input_kernel_initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_kernel_initializer</span><span class="p">,</span>
+                <span class="n">hidden_kernel_initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_kernel_initializer</span><span class="p">,</span>
+                <span class="n">memory_kernel_initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_kernel_initializer</span><span class="p">,</span>
+                <span class="n">hidden_activation</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_activation</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">config</span></div></div>
+
+
+<span class="k">class</span> <span class="nc">InputScaled</span><span class="p">(</span><span class="n">Initializer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Divides a constant value by the incoming dimensionality.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">InputScaled</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">K</span><span class="o">.</span><span class="n">constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">/</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="n">shape</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">LMUCellODE</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Variant of LMUCell that supports backprop through the ODE solver.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">units</span><span class="p">,</span>
+        <span class="n">order</span><span class="p">,</span>
+        <span class="n">theta</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>  <span class="c1"># relative to dt=1</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;euler&quot;</span><span class="p">,</span>
+        <span class="n">return_states</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">realizer</span><span class="o">=</span><span class="n">Identity</span><span class="p">(),</span>
+        <span class="n">factory</span><span class="o">=</span><span class="n">LegendreDelay</span><span class="p">,</span>
+        <span class="n">trainable_encoders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_decoders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_dt</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">trainable_A</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">trainable_B</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">encoder_initializer</span><span class="o">=</span><span class="n">InputScaled</span><span class="p">(</span><span class="mf">1.0</span><span class="p">),</span>  <span class="c1"># TODO</span>
+        <span class="n">decoder_initializer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># TODO</span>
+        <span class="n">hidden_activation</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>  <span class="c1"># TODO</span>
+        <span class="n">output_activation</span><span class="o">=</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span>  <span class="c1"># TODO</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">return_states</span> <span class="o">=</span> <span class="n">return_states</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">realizer</span> <span class="o">=</span> <span class="n">realizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">factory</span> <span class="o">=</span> <span class="n">factory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_encoders</span> <span class="o">=</span> <span class="n">trainable_encoders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_decoders</span> <span class="o">=</span> <span class="n">trainable_decoders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_dt</span> <span class="o">=</span> <span class="n">trainable_dt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_A</span> <span class="o">=</span> <span class="n">trainable_A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_B</span> <span class="o">=</span> <span class="n">trainable_B</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_realizer_result</span> <span class="o">=</span> <span class="n">realizer</span><span class="p">(</span><span class="n">factory</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_realizer_result</span><span class="o">.</span><span class="n">realization</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">B</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_C</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">C</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># proper LTI</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">encoder_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">Constant</span><span class="p">(</span><span class="mf">1.0</span><span class="p">))</span>
+
+        <span class="k">if</span> <span class="n">decoder_initializer</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">_C</span><span class="o">.</span><span class="n">shape</span> <span class="o">==</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+            <span class="n">C_full</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">))</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">):</span>
+                <span class="n">C_full</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="p">:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_C</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">decoder_initializer</span> <span class="o">=</span> <span class="n">Constant</span><span class="p">(</span>
+                <span class="n">C_full</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">decoder_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_activation</span> <span class="o">=</span> <span class="n">activations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hidden_activation</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_activation</span> <span class="o">=</span> <span class="n">activations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">output_activation</span><span class="p">)</span>
+
+        <span class="c1"># TODO: would it be better to absorb B into the encoders and then</span>
+        <span class="c1"># initialize it appropriately? trainable encoders+B essentially</span>
+        <span class="c1"># does this in a low-rank way</span>
+
+        <span class="c1"># if the realizer is CCF then we get the following two constraints</span>
+        <span class="c1"># that could be useful for efficiency</span>
+        <span class="c1"># assert np.allclose(self._ss.B[1:], 0)  # CCF</span>
+        <span class="c1"># assert np.allclose(self._ss.B[0], self.order**2)</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_dt</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainable_A</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">trainable_B</span><span class="p">):</span>
+            <span class="c1"># This is a hack to speed up parts of the computational graph</span>
+            <span class="c1"># that are static. This is not a general solution.</span>
+            <span class="n">ss</span> <span class="o">=</span> <span class="n">cont2discrete</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>
+            <span class="n">AT</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+            <span class="n">B</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">variable</span><span class="p">(</span><span class="n">ss</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="o">...</span><span class="p">])</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="p">(</span><span class="n">AT</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;euler&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_euler</span>
+
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">==</span> <span class="s2">&quot;zoh&quot;</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_zoh</span>
+
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s2">&quot;Unknown method=&#39;</span><span class="si">%s</span><span class="s2">&#39;&quot;</span> <span class="o">%</span> <span class="bp">self</span><span class="o">.</span><span class="n">method</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span>  <span class="c1"># flattened</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">state_size</span> <span class="k">if</span> <span class="n">return_states</span> <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes various network parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">input_dim</span> <span class="o">=</span> <span class="n">input_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># TODO: add regularizers</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;encoders&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">encoder_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_encoders</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;dt&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dt_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_dt</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;decoders&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">decoder_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_decoders</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">AT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;AT&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="o">.</span><span class="n">T</span><span class="p">),</span>  <span class="c1"># note: transposed</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_A</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">),</span>  <span class="c1"># system is SISO</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_B</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="p">:]),</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_B</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>  <span class="c1"># noqa: E741</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">zero_padding</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">built</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">_euler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">AT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">I</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">AT</span>
+        <span class="n">B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">AT</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_zoh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">M</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">K</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AT</span><span class="p">),</span> <span class="n">K</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">])],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">zero_padding</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">eM</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">tf</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">expm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">*</span> <span class="n">M</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="n">K</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="n">eM</span><span class="p">[:</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">]),</span>
+            <span class="n">K</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">eM</span><span class="p">[:</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="p">:],</span> <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Contains the logic for one LMU step calculation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">u</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoders</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">))</span>
+
+        <span class="n">AT</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_solver</span><span class="p">()</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">AT</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span> <span class="o">*</span> <span class="n">K</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_activation</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)))</span>
+
+        <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_activation</span><span class="p">(</span><span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoders</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">y</span><span class="p">,</span> <span class="p">[</span><span class="n">x</span><span class="p">]</span>
+
+
+<span class="k">class</span> <span class="nc">LMUCellGating</span><span class="p">(</span><span class="n">Layer</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Variant of LMUCell that supports gating mechanisms.&quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">units</span><span class="p">,</span>
+        <span class="n">order</span><span class="p">,</span>
+        <span class="n">theta</span><span class="p">,</span>  <span class="c1"># relative to dt=1</span>
+        <span class="n">method</span><span class="o">=</span><span class="s2">&quot;zoh&quot;</span><span class="p">,</span>
+        <span class="n">realizer</span><span class="o">=</span><span class="n">Identity</span><span class="p">(),</span>
+        <span class="n">factory</span><span class="o">=</span><span class="n">LegendreDelay</span><span class="p">,</span>
+        <span class="n">trainable_input_encoders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_hidden_encoders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_memory_encoders</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_input_kernel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_hidden_kernel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_memory_kernel</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">trainable_forget_input_kernel</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">trainable_forget_hidden_kernel</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">trainable_forget_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">trainable_A</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">trainable_B</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">input_encoders_initializer</span><span class="o">=</span><span class="s2">&quot;lecun_uniform&quot;</span><span class="p">,</span>
+        <span class="n">hidden_encoders_initializer</span><span class="o">=</span><span class="s2">&quot;lecun_uniform&quot;</span><span class="p">,</span>
+        <span class="n">memory_encoders_initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>  <span class="c1"># &#39;lecun_uniform&#39;,</span>
+        <span class="n">input_kernel_initializer</span><span class="o">=</span><span class="s2">&quot;glorot_normal&quot;</span><span class="p">,</span>
+        <span class="n">hidden_kernel_initializer</span><span class="o">=</span><span class="s2">&quot;glorot_normal&quot;</span><span class="p">,</span>
+        <span class="n">memory_kernel_initializer</span><span class="o">=</span><span class="s2">&quot;glorot_normal&quot;</span><span class="p">,</span>
+        <span class="n">forget_input_kernel_initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">forget_hidden_kernel_initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+        <span class="n">forget_bias_initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">hidden_activation</span><span class="o">=</span><span class="s2">&quot;tanh&quot;</span><span class="p">,</span>
+        <span class="n">input_activation</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="n">gate_activation</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">units</span> <span class="o">=</span> <span class="n">units</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">order</span> <span class="o">=</span> <span class="n">order</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">theta</span> <span class="o">=</span> <span class="n">theta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">method</span> <span class="o">=</span> <span class="n">method</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">realizer</span> <span class="o">=</span> <span class="n">realizer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">factory</span> <span class="o">=</span> <span class="n">factory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_input_encoders</span> <span class="o">=</span> <span class="n">trainable_input_encoders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_hidden_encoders</span> <span class="o">=</span> <span class="n">trainable_hidden_encoders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_memory_encoders</span> <span class="o">=</span> <span class="n">trainable_memory_encoders</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_input_kernel</span> <span class="o">=</span> <span class="n">trainable_input_kernel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_hidden_kernel</span> <span class="o">=</span> <span class="n">trainable_hidden_kernel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_memory_kernel</span> <span class="o">=</span> <span class="n">trainable_memory_kernel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_forget_input_kernel</span> <span class="o">=</span> <span class="p">(</span><span class="n">trainable_forget_input_kernel</span><span class="p">,)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_forget_hidden_kernel</span> <span class="o">=</span> <span class="n">trainable_forget_hidden_kernel</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_forget_bias</span> <span class="o">=</span> <span class="n">trainable_forget_bias</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_A</span> <span class="o">=</span> <span class="n">trainable_A</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">trainable_B</span> <span class="o">=</span> <span class="n">trainable_B</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_encoders_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">input_encoders_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_encoders_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hidden_encoders_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_encoders_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">memory_encoders_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_kernel_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">input_kernel_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_kernel_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hidden_kernel_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_kernel_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">memory_kernel_initializer</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forget_input_kernel_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">forget_input_kernel_initializer</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forget_hidden_kernel_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span>
+            <span class="n">forget_hidden_kernel_initializer</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">forget_bias_initializer</span> <span class="o">=</span> <span class="n">initializers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">forget_bias_initializer</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_activation</span> <span class="o">=</span> <span class="n">activations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">hidden_activation</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_activation</span> <span class="o">=</span> <span class="n">activations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">input_activation</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">gate_activation</span> <span class="o">=</span> <span class="n">activations</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">gate_activation</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_realizer_result</span> <span class="o">=</span> <span class="n">realizer</span><span class="p">(</span><span class="n">factory</span><span class="p">(</span><span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span> <span class="o">=</span> <span class="n">cont2discrete</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_realizer_result</span><span class="o">.</span><span class="n">realization</span><span class="p">,</span> <span class="n">dt</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">method</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">A</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">order</span><span class="p">)</span>  <span class="c1"># puts into form: x += Ax</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_B</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">B</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_C</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">C</span>
+        <span class="k">assert</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_ss</span><span class="o">.</span><span class="n">D</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># proper LTI</span>
+
+        <span class="c1"># assert self._C.shape == (1, self.order)</span>
+        <span class="c1"># C_full = np.zeros((self.units, self.order, self.units))</span>
+        <span class="c1"># for i in range(self.units):</span>
+        <span class="c1">#     C_full[i, :, i] = self._C[0]</span>
+        <span class="c1"># decoder_initializer = Constant(</span>
+        <span class="c1">#     C_full.reshape(self.units*self.order, self.units))</span>
+
+        <span class="c1"># TODO: would it be better to absorb B into the encoders and then</span>
+        <span class="c1"># initialize it appropriately? trainable encoders+B essentially</span>
+        <span class="c1"># does this in a low-rank way</span>
+
+        <span class="c1"># if the realizer is CCF then we get the following two constraints</span>
+        <span class="c1"># that could be useful for efficiency</span>
+        <span class="c1"># assert np.allclose(self._ss.B[1:], 0)  # CCF</span>
+        <span class="c1"># assert np.allclose(self._ss.B[0], self.order**2)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">state_size</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_size</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span>
+
+    <span class="k">def</span> <span class="nf">build</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_shape</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes various network parameters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">input_dim</span> <span class="o">=</span> <span class="n">input_shape</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># TODO: add regularizers</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_encoders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_encoders&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_encoders_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_input_encoders</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_encoders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;hidden_encoders&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_encoders_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_hidden_encoders</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_encoders</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;memory_encoders&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_encoders_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_memory_encoders</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;input_kernel&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">input_kernel_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_input_kernel</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;hidden_kernel&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_kernel_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_hidden_kernel</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;memory_kernel&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory_kernel_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_memory_kernel</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">forget_input_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;forget_input_kernel&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">input_dim</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">forget_input_kernel_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_forget_input_kernel</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">forget_hidden_kernel</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;forget_hidden_kernel&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">units</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">forget_input_kernel_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_forget_input_kernel</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">forget_bias</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;forget_bias&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">forget_bias_initializer</span><span class="p">,</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_forget_bias</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">AT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;AT&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">),</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_A</span><span class="o">.</span><span class="n">T</span><span class="p">),</span>  <span class="c1"># note: transposed</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_A</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">BT</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">add_weight</span><span class="p">(</span>
+            <span class="n">name</span><span class="o">=</span><span class="s2">&quot;BT&quot;</span><span class="p">,</span>
+            <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">order</span><span class="p">),</span>  <span class="c1"># system is SISO</span>
+            <span class="n">initializer</span><span class="o">=</span><span class="n">Constant</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_B</span><span class="o">.</span><span class="n">T</span><span class="p">),</span>  <span class="c1"># note: transposed</span>
+            <span class="n">trainable</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">trainable_B</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">built</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">inputs</span><span class="p">,</span> <span class="n">states</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Contains the logic for one LMU step calculation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">h</span><span class="p">,</span> <span class="n">m</span> <span class="o">=</span> <span class="n">states</span>
+
+        <span class="n">u</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_activation</span><span class="p">(</span>
+            <span class="p">(</span>
+                <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_encoders</span><span class="p">)</span>
+                <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_encoders</span><span class="p">)</span>
+                <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_encoders</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gate_activation</span><span class="p">(</span>
+            <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">forget_input_kernel</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">forget_hidden_kernel</span><span class="p">)</span>
+            <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">forget_bias</span>
+        <span class="p">)</span>
+
+        <span class="n">m</span> <span class="o">=</span> <span class="n">m</span> <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">AT</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span> <span class="o">*</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">BT</span><span class="p">)</span>
+
+        <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_activation</span><span class="p">(</span>
+            <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_kernel</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_kernel</span><span class="p">)</span>
+            <span class="o">+</span> <span class="n">K</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory_kernel</span><span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">h</span><span class="p">,</span> <span class="p">[</span><span class="n">h</span><span class="p">,</span> <span class="n">m</span><span class="p">]</span>
+</pre></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><footer class="text-light footer-main gradient-bottom">
+  <p class="small text-center mb-0">
+    <a class="no-hover-line" href="https://appliedbrainresearch.com">
+      <img
+        src="https://appliedbrainresearch.com/img/logo-blue-notext.svg"
+        height="48"
+      />
+    </a>
+    <a href="https://www.nengo.ai/">What is Nengo?</a>
+    <a href="https://www.nengo.ai/examples/">Examples</a>
+    <a href="https://www.nengo.ai/documentation/">Documentation</a>
+    <a href="https://www.nengo.ai/getting-started/">Getting started</a>
+    <a href="https://www.nengo.ai/privacy/">Privacy</a>
+  </p>
+  <p class="small text-center mb-0">&copy; Applied Brain Research</p>
+</footer>
+<script>
+  function switchVersion(select) {
+    var option = select.selectedOptions[0];
+    if (option.hasAttribute("value")) {
+      window.location = option.value;
+    }
+  }
+</script>
+
+<script>
+  var elements = document.querySelectorAll('.sidenav');
+  Stickyfill.add(elements);
+</script>
+<script>
+  ScrollReveal().reveal(".fade-in", {
+      scale: 0.85,
+      duration: 1000,
+      delay: 250,
+      interval: 50
+  });
+</script>
+<script>
+  $('a.toggle-sidenav').on('click', function(e) {
+    e.preventDefault();
+    if ( $(this).hasClass('active') ) {
+      $(this).removeClass('active');
+      $('.sidenav').removeClass('open');
+    } else {
+      $(this).addClass('active');
+      $('.sidenav').addClass('open');
+    }
+  });
+</script>
+<script>
+  var lists = document.querySelectorAll('.toctree ul');
+  lists.forEach((ul) => {
+      ul.classList.add("nav");
+  });
+  var links = document.querySelectorAll('.toctree a');
+  links.forEach((link) => {
+      link.classList.add("nav-link");
+  });
+  $("body").scrollspy({target: ".sidenav"});
+</script>
+  </body>
+</html>

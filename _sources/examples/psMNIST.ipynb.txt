@@ -1,0 +1,373 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Solving the Permuted Sequential MNIST (psMNIST) Task"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "The psMNIST (Permuted Sequential MNIST) task was introduced in 2015 by Le, Jaitly, and Hinton ([see paper](https://arxiv.org/pdf/1504.00941.pdf)). Similar to Sequential MNIST, the psMNIST task has the model process images, which correspond to handwritten digits, as a sequence of 784 pixels (28x28). The model then guesses the digit on the 785th timestep. However, psMNIST also applies a fixed permutation to the Sequential MNIST dataset to test the model's ability to learn on more complex data.\n",
+    "\n",
+    "The following notebook uses NengoLMU layers inside a simple TensorFlow model to showcase the accuracy and efficiency that is producible using these novel cells. Currently, NengoLMU is state of the art for this task ([see paper](https://papers.nips.cc/paper/9689-legendre-memory-units-continuous-time-representation-in-recurrent-neural-networks.pdf))."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true
+   },
+   "outputs": [],
+   "source": [
+    "%matplotlib inline\n",
+    "\n",
+    "import time\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "from IPython.display import Image, display\n",
+    "import tensorflow as tf\n",
+    "\n",
+    "from lmu import LMUCell\n",
+    "\n",
+    "from tensorflow.keras.callbacks import ModelCheckpoint\n",
+    "from tensorflow.keras.layers import Dense, RNN\n",
+    "from tensorflow.keras.models import Sequential\n",
+    "from tensorflow.keras.initializers import Constant\n",
+    "from tensorflow.keras.utils import to_categorical"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Step 1: Loading and Formatting the Dataset"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "First we set a seed to ensure this example is reproducible. Then, using that seed we generate a `RandomState`, which we use for fixed permutation of the data."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "seed = 0\n",
+    "tf.random.set_seed(seed)\n",
+    "np.random.seed(seed)\n",
+    "rng = np.random.RandomState(seed)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We now obtain the standard MNIST dataset of handwritten digits from `tf.keras.datasets`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "(\n",
+    "    (train_images, train_labels),\n",
+    "    (test_images, test_labels),\n",
+    ") = tf.keras.datasets.mnist.load_data()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We then normalize the pixel values by dividing by 255, as the current range of values is between 0-255. The image displayed below shows a grayscale version of a sample in the dataset. This is the type of data used for the standard MNIST task."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "train_images = train_images / 255\n",
+    "test_images = test_images / 255\n",
+    "\n",
+    "plt.figure()\n",
+    "plt.imshow(np.reshape(train_images[0], (28, 28)), cmap=\"gray\")\n",
+    "plt.axis('off')\n",
+    "plt.title(\"Image represents \" + str(train_labels[0]))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Here we flatten the images into sequences. To do this, we must reshape our dataset. The first dimension represents the number of samples our dataset has, which we keep the same. We want to transform each sample into a column vector, and to do so we make the second and third dimensions -1 and 1, respectively, leveraging a standard `numpy` trick specifically used for converting multi-dimensional data into column vectors. The image displayed below shows the result of this flattening process, and is an example of the type of data that is used in the Sequential MNIST task. Note that there is still a fair amount of structure remaining in the image."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "train_images = train_images.reshape((train_images.shape[0], -1, 1))\n",
+    "test_images = test_images.reshape((test_images.shape[0], -1, 1))\n",
+    "\n",
+    "# we'll display the sequence in 8 rows just so that it fits better on the screen\n",
+    "plt.figure()\n",
+    "plt.imshow(train_images[0].reshape(8, -1), cmap=\"gray\")\n",
+    "plt.axis('off')\n",
+    "plt.title(\"Image represents \" + str(train_labels[0]))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Finally, we apply a fixed permutation on the training and testing dataset. This essentially shuffles the pixels of the image sequences in a consistent way, allowing for images of the same digit to still be similar, but disabling the convenience of edges and contours for easy digit inference.\n",
+    "\n",
+    "We can see, from the image below, that the fixed permutation applied to the image has evenly distributed the pixels across the entire sequence. This makes the task much more difficult as it makes it necessary for the model to process the entire input sequence to accurately predict what the digit is. We now have our data for the Permuted Sequential MNIST (psMNIST) task."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "perm = rng.permutation(train_images.shape[1])\n",
+    "train_images = train_images[:, perm]\n",
+    "test_images = test_images[:, perm]\n",
+    "\n",
+    "plt.figure()\n",
+    "plt.imshow(train_images[0].reshape(8, -1), cmap=\"gray\")\n",
+    "plt.axis('off')\n",
+    "plt.title(\"Image represents \" + str(train_labels[0]))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "We allocate the first 50,000 training images for training, and the remaining 10,000 for validation. We can print out the shapes of these datasets to ensure we did all these steps correctly."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "X_train = train_images[0:50000]\n",
+    "X_valid = train_images[50000:]\n",
+    "X_test = test_images\n",
+    "\n",
+    "Y_train = train_labels[0:50000]\n",
+    "Y_valid = train_labels[50000:]\n",
+    "Y_test = test_labels\n",
+    "\n",
+    "print(\"Training inputs shape: \" + str(X_train.shape)\n",
+    "      + \", Training targets shape: \" + str(Y_train.shape))\n",
+    "print(\"Validation inputs shape: \" + str(X_valid.shape)\n",
+    "      + \", Validation targets shape: \" + str(Y_valid.shape))\n",
+    "print(\"Testing inputs shape: \" + str(X_test.shape)\n",
+    "      + \", Testing targets shape: \" + str(Y_test.shape))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Step 2: Defining the Model"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Our model uses 212 `units` and an `order` of 256 dimensions for the memory, maintaining `units` + `order` = 468 variables in memory between time-steps. These numbers were chosen primarily to have a comparable number of internal variables to the models that were being compared against in the [paper](https://arxiv.org/pdf/1504.00941.pdf).\n",
+    "\n",
+    "The hidden state is projected to an output softmax layer. We set `theta` to 784 (the number of pixels in each sequence), and initialize the hidden and memory encoders, and input and hidden kernels to 0, in order to test the ability of the network to learn these parameters."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "n_pixels = 28 ** 2\n",
+    "\n",
+    "\n",
+    "def lmu_layer(**kwargs):\n",
+    "    return RNN(\n",
+    "        LMUCell(\n",
+    "            units=212,\n",
+    "            order=256,\n",
+    "            theta=n_pixels,\n",
+    "            input_encoders_initializer=Constant(1),\n",
+    "            hidden_encoders_initializer=Constant(0),\n",
+    "            memory_encoders_initializer=Constant(0),\n",
+    "            input_kernel_initializer=Constant(0),\n",
+    "            hidden_kernel_initializer=Constant(0),\n",
+    "            memory_kernel_initializer=\"glorot_normal\",\n",
+    "        ),\n",
+    "        return_sequences=False,\n",
+    "        **kwargs\n",
+    "    )\n",
+    "\n",
+    "\n",
+    "model = Sequential()\n",
+    "model.add(lmu_layer(input_shape=X_train.shape[1:],))  # (nr. of pixels, 1)\n",
+    "model.add(Dense(10, activation=\"softmax\"))\n",
+    "model.compile(loss=\"categorical_crossentropy\", optimizer=\"adam\", metrics=[\"accuracy\"])\n",
+    "model.summary()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Step 3: Training the Model"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "To train our model, we use a `batch_size` of 100, and train for 4 `epochs`, which is a far less than most other solutions to the psMNIST task. We could train for more epochs if we wished to fine-tune performance, but that is not necessary for the purposes of this example. We also create a `ModelCheckpoint` callback that saves the weights of the model to a file after each epoch.\n",
+    "\n",
+    "The time required for this to run is tracked using the `time` library. Training may take a long time to complete, and to save time, this example uses pre-trained weights. To train the model from scratch, simply change the `do_training` variable to `True` before running any more code."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": false
+   },
+   "outputs": [],
+   "source": [
+    "do_training = False\n",
+    "batch_size = 100\n",
+    "epochs = 4\n",
+    "t = time.time()\n",
+    "\n",
+    "fname = \"./psMNIST-standard.hdf5\"\n",
+    "callbacks = [\n",
+    "    ModelCheckpoint(filepath=fname, monitor=\"val_loss\", verbose=1, save_best_only=True),\n",
+    "]\n",
+    "\n",
+    "if do_training:\n",
+    "    result = model.fit(\n",
+    "        X_train,\n",
+    "        to_categorical(Y_train),\n",
+    "        epochs=epochs,\n",
+    "        batch_size=batch_size,\n",
+    "        validation_data=(X_valid, to_categorical(Y_valid)),\n",
+    "        callbacks=callbacks,\n",
+    "    )\n",
+    "\n",
+    "    print(\"Took {:.2f} min\".format((time.time() - t) / 60))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Step 4: Plotting Learning"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Now we plot the result of the above training uing `matplotlib` functions. Here we plot the accuracy for the training and validation across the 4 epochs. Note that the loss can sometimes explode after enough epochs. As a result, we need to query the epoch that produced the minimum loss using `np.argmin()`.\n",
+    "\n",
+    "If you are running a pretrained version of this model, as is displayed here, a saved image file representing the learning of the pretrianed model is being displayed."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "if do_training:\n",
+    "    plt.figure()\n",
+    "    plt.plot(result.history[\"val_accuracy\"], label=\"Validation\")\n",
+    "    plt.plot(result.history[\"accuracy\"], label=\"Training\")\n",
+    "    plt.legend()\n",
+    "    plt.xlabel(\"Epoch\")\n",
+    "    plt.ylabel(\"Accuracy\")\n",
+    "    plt.title(\"psMNIST - LMU\")\n",
+    "    plt.xticks(np.arange(4), np.arange(1, 5))\n",
+    "    plt.savefig(\"psMNIST-LMU Learning.png\")\n",
+    "    \n",
+    "    val_loss_min = np.argmin(result.history[\"val_loss\"])\n",
+    "    print(\"Validation Accuracy: \"\n",
+    "          + str(round(result.history[\"val_accuracy\"][val_loss_min] * 100, 2)) + \"%\")\n",
+    "\n",
+    "else:\n",
+    "    display(Image(filename='psMNIST-LMU Learning.png'))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Step 5: Testing the Model"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "In the case where we want to use a pretrained model, we load the weights saved to file here. If we do train, this simply overwrites the model with the same weights. Once loaded, we test the model on our testing dataset."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "model.load_weights(fname)\n",
+    "accuracy = model.evaluate(X_test, to_categorical(Y_test))[1] * 100\n",
+    "print(\"Testing accuracy: \" + str(round(accuracy, 2)) + \"%\")"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.10"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

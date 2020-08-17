@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>API reference &#8212; NengoLMU 0.1.1.dev0 docs</title>
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,600|Rajdhani:700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.nengo.ai/css/bootstrap.css" type="text/css">
+<style>
+  body .title-bar,
+  body .documentation-source h1:after {
+    background-color: #a8acaf;
+  }
+</style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-41658423-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-41658423-2');
+</script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/scrollreveal"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stickyfill/2.1.0/stickyfill.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+<!-- From basic/layout.html -->
+<script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+  
+  
+<script src="_static/underscore.js"></script>
+  
+  
+<script src="_static/doctools.js"></script>
+  
+  
+<script src="_static/language_data.js"></script>
+  
+  
+<script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="prev" title="Basic usage" href="basic-usage.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  </head><body class="bg-dark">
+
+<header class="fixed-top header-top shadow-sm">
+  <nav class="navbar navbar-expand-md navbar-light bg-white">
+    <a class="navbar-brand" href="https://www.nengo.ai/">
+      <img
+        src="https://www.nengo.ai/design/_images/general-full-light.svg"
+        alt="Nengo"
+        class="logo"
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-collapse"
+      aria-controls="navbar-collapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar-collapse">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.nengo.ai/">What is Nengo?</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://www.nengo.ai/examples/">Examples</a>
+        </li>
+        <li class="nav-item dropdown active">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbar-dropdown-docs"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            href="#"
+            >Documentation</a
+          >
+          <div
+            class="dropdown-menu shadow-lg border-0"
+            aria-labelledby="navbar-dropdown-docs"
+          >
+            
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo/">Nengo Core</a>
+            <a class="dropdown-item" href="https://github.com/nengo/nengo-gui/">Nengo GUI</a>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-dl/">Nengo DL</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-spa/">Nengo SPA</a>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-extras/">Nengo Extras</a>
+            <a class="dropdown-item" href="https://arvoelke.github.io/nengolib-docs/">Nengolib</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-fpga/">Nengo FPGA</a>
+            <a class="dropdown-item" href="https://www.nengo.ai/nengo-loihi/">Nengo Loihi</a>
+            <a class="dropdown-item" href="https://github.com/nengo/nengo-ocl">Nengo OpenCL</a>
+            <a class="dropdown-item" href="https://github.com/project-rig/nengo_spinnaker">Nengo SpiNNaker</a>
+            <a class="dropdown-item" href="https://github.com/nengo/nengo-mpi">Nengo MPI</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/documentation/"
+              >All documentation</a
+            >
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbar-dropdown-community"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            href="#"
+            >Community</a
+          >
+          <div
+            class="dropdown-menu shadow-lg border-0"
+            aria-labelledby="navbar-dropdown-community"
+          >
+            <a class="dropdown-item" href="https://forum.nengo.ai">Forum</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="https://www.nengo.ai/people/"
+              >People</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/summer-school/"
+              >Summer school</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/contributing/"
+              >Contributing</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/publications/"
+              >Publications</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/videos/"
+              >Videos</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/conduct/"
+              >Code of conduct</a
+            >
+            <a class="dropdown-item" href="https://www.nengo.ai/caa/">CAA</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link btn btn-success btn-sm text-white"
+            href="https://www.nengo.ai/getting-started/"
+            >Getting started</a
+          >
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<div class="main-content gradient-top">
+  <div class="container-fluid">
+    <div class="row"><a class="toggle-sidenav d-block d-md-none" href="#"
+  ><i class="icon-close fa fa-fw fa-arrow-left"></i
+  ><i class="icon-open fa fa-fw fa-arrow-right"></i
+></a>
+<div role="complementary" class="sidenav col-4 col-xl-3 p-0 border-right">
+  <h3 class="pt-5 px-5">
+    <a href="index.html">
+      <img
+        class="img-fluid documentation-image"
+        src="https://www.nengo.ai/design/_images/general-full-light.svg"
+        alt="NengoLMU"
+      />
+    </a>
+  </h3>
+<form class="px-5 py-3 my-0 border-bottom" action="search.html" method="get">
+  <div class="form-group form-group-single">
+    <input type="text" name="q" class="form-control" placeholder="Search" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+    <button type="submit" class="btn btn-link">
+      <img src="https://www.nengo.ai/img/icon-search.svg" alt="Go" />
+    </button>
+  </div>
+</form><div class="p-5 toctree">
+  
+    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basic-usage.html">Basic usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lmu-cell">LMU Cell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#legendre-initializer">Legendre Initializer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project information</a></li>
+</ul>
+
+  
+  </div>
+  
+  <form class="p-5 my-0 border-top">
+    <div class="form-group">
+      <label class="text-gray">Version:</label>
+      <select class="custom-select" onchange="switchVersion(this);">
+        
+        
+        <option selected>latest</option>
+        
+        
+      </select>
+    </div>
+  </form>
+  
+</div>
+      
+
+      <div class="col-12 col-md-8 col-xl-9">
+        <div class="container">
+          <div class="row">
+            <div class="col-10 offset-1 pb-5 documentation-source" role="main">
+              
+  <div class="section" id="api-reference">
+<span id="id1"></span><h1>API reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="lmu-cell">
+<span id="api-reference-lc"></span><h2>LMU Cell<a class="headerlink" href="#lmu-cell" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lmu.LMUCell" title="lmu.LMUCell"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lmu.LMUCell</span></code></a></p></td>
+<td><p>A layer of trainable low-dimensional delay systems.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="lmu.LMUCell">
+<em class="property">class </em><code class="sig-prename descclassname">lmu.</code><code class="sig-name descname">LMUCell</code><span class="sig-paren">(</span><em class="sig-param">units</em>, <em class="sig-param">order</em>, <em class="sig-param">theta</em>, <em class="sig-param">method='zoh'</em>, <em class="sig-param">realizer=Identity()</em>, <em class="sig-param">factory=&lt;function LegendreDelay&gt;</em>, <em class="sig-param">trainable_input_encoders=True</em>, <em class="sig-param">trainable_hidden_encoders=True</em>, <em class="sig-param">trainable_memory_encoders=True</em>, <em class="sig-param">trainable_input_kernel=True</em>, <em class="sig-param">trainable_hidden_kernel=True</em>, <em class="sig-param">trainable_memory_kernel=True</em>, <em class="sig-param">trainable_A=False</em>, <em class="sig-param">trainable_B=False</em>, <em class="sig-param">input_encoders_initializer='lecun_uniform'</em>, <em class="sig-param">hidden_encoders_initializer='lecun_uniform'</em>, <em class="sig-param">memory_encoders_initializer=&lt;tensorflow.python.keras.initializers.initializers_v2.Constant object&gt;</em>, <em class="sig-param">input_kernel_initializer='glorot_normal'</em>, <em class="sig-param">hidden_kernel_initializer='glorot_normal'</em>, <em class="sig-param">memory_kernel_initializer='glorot_normal'</em>, <em class="sig-param">hidden_activation='tanh'</em>, <em class="sig-param">**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lmu/lmu.html#LMUCell"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lmu.LMUCell" title="Permalink to this definition">¶</a></dt>
+<dd><p>A layer of trainable low-dimensional delay systems.</p>
+<p>Each unit buffers its encoded input
+by internally representing a low-dimensional
+(i.e., compressed) version of the sliding window.</p>
+<p>Nonlinear decodings of this representation,
+expressed by the A and B matrices, provide
+computations across the window, such as its
+derivative, energy, median value, etc (*).
+Note that these decoder matrices can span across
+all of the units of an input sequence.</p>
+<p>By default the window lengths are trained via backpropagation,
+as well as the encoding and decoding weights.</p>
+<p>Optionally, the A and B matrices that implement
+the low-dimensional delay system can be trained as well,
+but these are shared across all of the units in the layer.</p>
+<p>(*) Voelker and Eliasmith (2018). Improving spiking dynamical
+networks: Accurate delays, higher-order synapses, and time cells.
+Neural Computation, 30(3): 569-609.</p>
+<p>(*) Voelker and Eliasmith. “Methods and systems for implementing
+dynamic neural networks.” U.S. Patent Application No. 15/243,223.
+Filing date: 2016-08-22.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>units</strong><span class="classifier">int</span></dt><dd><p>The number of cells the layer will hold. This
+defines the dimensionality of the output vector.</p>
+</dd>
+<dt><strong>order</strong><span class="classifier">int</span></dt><dd><p>The size of the memory cell. This defines the
+first dimensions of both the memory encorder
+and kernel. It is also used to determine the
+dimensions of the A and B matrices.</p>
+</dd>
+<dt><strong>theta</strong><span class="classifier">int</span></dt><dd><p>The size of the sliding window, equivalent to
+the number of timesteps the model will process.
+In this context, the sliding window represents
+a dynamic range of data, of fixed size, that will
+be used to predict the value at the next time step.
+If this value is smaller than the size of the input
+sequence, only that number of steps will be represented
+in the A and B matrices at the time of prediction,
+however the entire sequence will still be processed
+in order for information to be projected to and from
+the hidden layer. This value is relative to a timestep
+of 1 second.</p>
+</dd>
+<dt><strong>method</strong><span class="classifier">string, optional</span></dt><dd><p>The discretization method used to compute the A
+and B matrices. These matrices are used to map
+inputs onto the memory of the network.</p>
+</dd>
+<dt><strong>realizer</strong><span class="classifier">nengolib.signal, optional</span></dt><dd><p>Determines what state space representation is
+being realized. This will be applied to the A
+and B matrices. Generally, unless you are training
+the A and B matrices, this should remain as
+its default.</p>
+</dd>
+<dt><strong>factory</strong><span class="classifier">nengolib.synapses, optional</span></dt><dd><p>Determines what LTI is being created. By default,
+this is the A and B matrices. This can also be used
+to produce different realizations for the same LTI.
+For example, using PadeDelay would give a rotation
+of LegendreDelay. In general, this allows you to
+swap out the dynamic primitive for something else
+entirely.</p>
+</dd>
+<dt><strong>trainable_input_encoders</strong><span class="classifier">bool, optional</span></dt><dd><p>When true, the input encoders will be trained. This
+will allow for the encoders to learn what
+information is relevant to project from the input.</p>
+</dd>
+<dt><strong>trainable_hidden_encoders</strong><span class="classifier">bool, optional</span></dt><dd><p>When true, the hidden encoders will be trained. This
+will allow for the encoders to learn what
+information is relevant to project from the hidden
+state.</p>
+</dd>
+<dt><strong>trainable_memory_encoders</strong><span class="classifier">bool, optional</span></dt><dd><p>When true, the memory encoders will be trained. This
+will allow for the encoders to learn what
+information is relevant to project from the memory.</p>
+</dd>
+<dt><strong>trainable_input_kernel</strong><span class="classifier">bool, optional</span></dt><dd><p>When true, the input kernel will be trained. This
+will allow for the kernel to learn to compute
+nonlinear functions across the memory.</p>
+</dd>
+<dt><strong>trainable_hidden_kernel</strong><span class="classifier">bool, optional</span></dt><dd><p>When true, the hidden kernel will be trained. This
+will allow for the kernel to learn to compute
+nonlinear functions across the memory.</p>
+</dd>
+<dt><strong>trainable_memory_kernel</strong><span class="classifier">bool, optional</span></dt><dd><p>When true, the memory kernel will be trained. This
+will allow for the kernel to learn to compute
+nonlinear functions across the memory.</p>
+</dd>
+<dt><strong>trainable_A</strong><span class="classifier">bool, optional</span></dt><dd><p>When true, the A matrix will be trained via backpropagation,
+though this is generally not necessary as they can be derived.</p>
+</dd>
+<dt><strong>trainable_B</strong><span class="classifier">bool, optional</span></dt><dd><p>When true, the B matrix will be trained via backpropagation,
+though this is generally not necessary as they can be derived.</p>
+</dd>
+<dt><strong>input_encoders_initializer</strong><span class="classifier">tf.keras.initializers.Initializer, optional</span></dt><dd><p>The distribution for the input encoder weights initialization.</p>
+</dd>
+<dt><strong>hidden_encoders_initializer</strong><span class="classifier">tf.keras.initializers.Initializer, optional</span></dt><dd><p>The distribution for the hidden encoder weights initialization.</p>
+</dd>
+<dt><strong>memory_encoders_initializer</strong><span class="classifier">tf.keras.initializers.Initializer, optional</span></dt><dd><p>The distribution for the memory encoder weights initialization.</p>
+</dd>
+<dt><strong>input_kernel_initializer</strong><span class="classifier">tf.keras.initializers.Initializer, optional</span></dt><dd><p>The distribution for the input kernel weights initialization.</p>
+</dd>
+<dt><strong>hidden_kernel_initializer</strong><span class="classifier">tf.keras.initializers.Initializer, optional</span></dt><dd><p>The distribution for the hidden kernel weights initialization.</p>
+</dd>
+<dt><strong>memory_kernel_initializer</strong><span class="classifier">tf.keras.initializers.Initializer, optional</span></dt><dd><p>The distribution for the memory kernel weights initialization.</p>
+</dd>
+<dt><strong>hidden_activation</strong><span class="classifier">string, optional</span></dt><dd><p>The activation function to be used in the hidden component of the LMU.</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>state_size</strong><span class="classifier">tuple</span></dt><dd><p>A tuple containing the units and order.</p>
+</dd>
+<dt><strong>output_size</strong><span class="classifier">int</span></dt><dd><p>A duplicate of the units parameter.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="lmu.LMUCell.build">
+<code class="sig-name descname">build</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">input_shape</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lmu/lmu.html#LMUCell.build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lmu.LMUCell.build" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overrides the TensorFlow build function.
+Initializes all the encoders and kernels,
+as well as the A and B matrices for the
+LMUCell.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lmu.LMUCell.call">
+<code class="sig-name descname">call</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">inputs</span></em>, <em class="sig-param"><span class="n">states</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/lmu/lmu.html#LMUCell.call"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lmu.LMUCell.call" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overrides the TensorFlow call function.
+Contains the logic for one LMU step calculation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="lmu.LMUCell.get_config">
+<code class="sig-name descname">get_config</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/lmu/lmu.html#LMUCell.get_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lmu.LMUCell.get_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overrides the TensorFlow get_config function.
+Sets the config with the LMUCell parameters.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="legendre-initializer">
+<span id="api-reference-li"></span><h2>Legendre Initializer<a class="headerlink" href="#legendre-initializer" title="Permalink to this headline">¶</a></h2>
+<table class="longtable docutils align-default">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#lmu.Legendre" title="lmu.Legendre"><code class="xref py py-obj docutils literal notranslate"><span class="pre">lmu.Legendre</span></code></a></p></td>
+<td><p>Initializes weights using Legendre polynomials, leveraging scipy’s legendre function.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py class">
+<dt id="lmu.Legendre">
+<em class="property">class </em><code class="sig-prename descclassname">lmu.</code><code class="sig-name descname">Legendre</code><a class="reference internal" href="_modules/lmu/lmu.html#Legendre"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#lmu.Legendre" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes weights using Legendre polynomials,
+leveraging scipy’s legendre function. This may be used
+for the encoder and kernel initializers.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div><footer class="text-light footer-main gradient-bottom">
+  <p class="small text-center mb-0">
+    <a class="no-hover-line" href="https://appliedbrainresearch.com">
+      <img
+        src="https://appliedbrainresearch.com/img/logo-blue-notext.svg"
+        height="48"
+      />
+    </a>
+    <a href="https://www.nengo.ai/">What is Nengo?</a>
+    <a href="https://www.nengo.ai/examples/">Examples</a>
+    <a href="https://www.nengo.ai/documentation/">Documentation</a>
+    <a href="https://www.nengo.ai/getting-started/">Getting started</a>
+    <a href="https://www.nengo.ai/privacy/">Privacy</a>
+  </p>
+  <p class="small text-center mb-0">&copy; Applied Brain Research</p>
+</footer>
+<script>
+  function switchVersion(select) {
+    var option = select.selectedOptions[0];
+    if (option.hasAttribute("value")) {
+      window.location = option.value;
+    }
+  }
+</script>
+
+<script>
+  var elements = document.querySelectorAll('.sidenav');
+  Stickyfill.add(elements);
+</script>
+<script>
+  ScrollReveal().reveal(".fade-in", {
+      scale: 0.85,
+      duration: 1000,
+      delay: 250,
+      interval: 50
+  });
+</script>
+<script>
+  $('a.toggle-sidenav').on('click', function(e) {
+    e.preventDefault();
+    if ( $(this).hasClass('active') ) {
+      $(this).removeClass('active');
+      $('.sidenav').removeClass('open');
+    } else {
+      $(this).addClass('active');
+      $('.sidenav').addClass('open');
+    }
+  });
+</script>
+<script>
+  var lists = document.querySelectorAll('.toctree ul');
+  lists.forEach((ul) => {
+      ul.classList.add("nav");
+  });
+  var links = document.querySelectorAll('.toctree a');
+  links.forEach((link) => {
+      link.classList.add("nav-link");
+  });
+  $("body").scrollspy({target: ".sidenav"});
+</script>
+  </body>
+</html>
